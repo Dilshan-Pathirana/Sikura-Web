@@ -5,9 +5,14 @@ import Operation from '../../../../../models/Operation'
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {
   await connectMongoose()
   try {
-    await Operation.findByIdAndDelete(params.id)
+    const deleted = await Operation.findByIdAndDelete(params.id)
+    if (!deleted) {
+      return NextResponse.json({ error: 'Not found' }, { status: 404 })
+    }
     return NextResponse.json({ ok: true })
   } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('Operation delete error:', (e as any)?.message || e)
     return NextResponse.json({ error: 'Delete failed' }, { status: 500 })
   }
 }

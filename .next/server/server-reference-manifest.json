@@ -1,22 +1,5 @@
 {
-  "node": {
-    "3296b085157420a6c31d135d597493181c7ea312": {
-      "workers": {
-        "app/admin/(dashboard)/operations/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22E%3A%5C%5Cnew-web%5C%5CSikura-Web%5C%5Capp%5C%5Cadmin%5C%5C(dashboard)%5C%5Coperations%5C%5Cpage.tsx%22%2C%5B%22%24%24ACTION_0%22%2C%22%24%24ACTION_1%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/admin/(dashboard)/operations/page": "rsc"
-      }
-    },
-    "ff10072388468fa2859faca9d22fc2efc0c4d466": {
-      "workers": {
-        "app/admin/(dashboard)/operations/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22E%3A%5C%5Cnew-web%5C%5CSikura-Web%5C%5Capp%5C%5Cadmin%5C%5C(dashboard)%5C%5Coperations%5C%5Cpage.tsx%22%2C%5B%22%24%24ACTION_0%22%2C%22%24%24ACTION_1%22%5D%5D%5D&__client_imported__=!"
-      },
-      "layer": {
-        "app/admin/(dashboard)/operations/page": "rsc"
-      }
-    }
-  },
+  "node": {},
   "edge": {},
-  "encryptionKey": "14HkNHdaZ/P6Spfi/5sMcKPQ/t2fCIqCT756u08it1k="
+  "encryptionKey": "1stQMQiLBnuMeWODOLab5Gbki+L1eyupbbAcd7WjpaQ="
 }

@@ -6,9 +6,14 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
   await connectMongoose()
   const { id } = params
   try {
-    await Category.findByIdAndDelete(id)
+    const deleted = await Category.findByIdAndDelete(id)
+    if (!deleted) {
+      return NextResponse.json({ error: 'Not found' }, { status: 404 })
+    }
     return NextResponse.json({ ok: true })
   } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('Category delete error:', (e as any)?.message || e)
     return NextResponse.json({ error: 'Delete failed' }, { status: 500 })
   }
 }

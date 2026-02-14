@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import connectMongoose from '../../../../lib/mongoose'
 import Category from '../../../../models/Category'
 
@@ -17,6 +18,14 @@ export async function POST(req: Request) {
   await connectMongoose()
   try {
     const created = await Category.create(body)
+    // Revalidate public and admin category pages so the deployed site shows the update
+    try {
+      revalidatePath('/categories')
+      revalidatePath('/')
+      revalidatePath('/admin/(dashboard)/categories')
+    } catch (e) {
+      // ignore revalidation errors
+    }
     return NextResponse.json(created)
   } catch (e) {
     return NextResponse.json({ error: 'Create failed' }, { status: 500 })

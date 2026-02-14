@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import connectMongoose from '../../../../../lib/mongoose'
 import Operation from '../../../../../models/Operation'
 
@@ -9,6 +10,11 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
     if (!deleted) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 })
     }
+    try {
+      revalidatePath('/operations')
+      revalidatePath('/')
+      revalidatePath('/admin/(dashboard)/operations')
+    } catch (e) {}
     return NextResponse.json({ ok: true })
   } catch (e) {
     // eslint-disable-next-line no-console
@@ -21,9 +27,17 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   const body = await req.json()
   await connectMongoose()
   try {
-    await Operation.findByIdAndUpdate(params.id, body)
+    const updated = await Operation.findByIdAndUpdate(params.id, body)
+    if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 })
+    try {
+      revalidatePath('/operations')
+      revalidatePath('/')
+      revalidatePath('/admin/(dashboard)/operations')
+    } catch (e) {}
     return NextResponse.json({ ok: true })
   } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error('Operation update/delete error:', (e as any)?.message || e)
     return NextResponse.json({ error: 'Update failed' }, { status: 500 })
   }
 }

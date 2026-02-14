@@ -42,39 +42,39 @@ export default function AdminDashboardPage() {
   }, [])
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-2">Dashboard Overview</h1>
-        <p className="text-navy-400">Welcome back, Administrator.</p>
+        <h1 className="text-4xl font-black text-white mb-2 tracking-tight uppercase">System Overview</h1>
+        <p className="text-navy-400 font-medium">Monitor and manage the Skill Matrix infrastructure.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <StatsCard
-          title="Total Categories"
+          title="Machine Types"
           value={loading ? '...' : stats.categoriesCount}
           icon={FolderOpen}
           href="/admin/categories"
-          color="text-brand-400"
-          bg="bg-brand-500/10"
+          color="text-primary"
+          bg="bg-primary/10"
         />
         <StatsCard
-          title="Total Operations"
+          title="Training Operations"
           value={loading ? '...' : stats.operationsCount}
           icon={FileVideo}
           href="/admin/operations"
-          color="text-accent-cyan"
-          bg="bg-accent-cyan/10"
+          color="text-accent-green"
+          bg="bg-accent-green/10"
         />
         <StatsCard
-          title="Active Admins"
-          value="1"
+          title="Security Clearance"
+          value="Level 5"
           icon={Users}
-          color="text-accent-pink"
-          bg="bg-accent-pink/10"
+          color="text-blue-400"
+          bg="bg-blue-400/10"
         />
         <StatsCard
-          title="System Status"
-          value="Online"
+          title="System Health"
+          value="OPTIMAL"
           icon={Activity}
           color="text-emerald-400"
           bg="bg-emerald-500/10"
@@ -86,13 +86,13 @@ export default function AdminDashboardPage() {
 
 function StatsCard({ title, value, icon: Icon, href, color, bg }: any) {
   const CardContent = (
-    <div className="bg-navy-900 border border-navy-800 p-6 rounded-xl flex items-center gap-4 hover:border-navy-700 transition-colors">
-      <div className={`p-3 rounded-lg ${bg}`}>
-        <Icon className={`w-6 h-6 ${color}`} />
+    <div className="bg-navy-900/50 border border-white/5 p-8 rounded-2xl flex flex-col gap-6 hover:bg-navy-900 hover:border-white/10 transition-all duration-300 group shadow-lg">
+      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 ${bg} ${color} border border-white/5 group-hover:scale-110`}>
+        <Icon className="w-7 h-7" />
       </div>
       <div>
-        <p className="text-navy-400 text-sm font-medium">{title}</p>
-        <p className="text-2xl font-bold text-white">{value}</p>
+        <p className="text-navy-400 text-xs font-bold uppercase tracking-widest mb-1">{title}</p>
+        <p className="text-3xl font-black text-white tracking-tight">{value}</p>
       </div>
     </div>
   )

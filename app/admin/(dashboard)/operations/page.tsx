@@ -85,41 +85,50 @@ export default async function OperationsPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Operations</h1>
+        <h1 className="text-3xl font-black text-white uppercase tracking-tight">Manage Operations</h1>
       </div>
 
       <section>
-        <Card className="p-4">
-          <h2 className="text-lg font-medium mb-3">Add Operation</h2>
+        <Card className="p-8 border-white/5 bg-navy-900/40">
+          <h2 className="text-xl font-extrabold text-white mb-6 flex items-center gap-2">
+            <span className="w-1.5 h-6 bg-primary rounded-full" />
+            New Operation
+          </h2>
           <AddOperationForm categories={categories} action={createOperation} />
         </Card>
       </section>
 
-      <section>
-        <h2 className="text-lg font-medium mb-2">Operations List</h2>
-        <Card>
+      <section className="space-y-4">
+        <h2 className="text-xl font-extrabold text-white flex items-center gap-2">
+          <span className="w-1.5 h-6 bg-accent-green rounded-full" />
+          Operations Repository
+        </h2>
+        <Card className="border-white/5 overflow-hidden bg-navy-900/40">
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-navy-800">
-              <thead className="bg-navy-900">
+            <table className="min-w-full">
+              <thead className="bg-navy-950 border-b border-white/5">
                 <tr>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-white">Title</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-white">Category</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-white">Video</th>
-                  <th className="px-4 py-3 text-center text-sm font-semibold text-white">Actions</th>
+                  <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Title</th>
+                  <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Category</th>
+                  <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Video Source</th>
+                  <th className="px-6 py-4 text-center text-xs font-black text-navy-400 uppercase tracking-widest">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-navy-800">
+              <tbody className="divide-y divide-white/5">
                 {ops.map(op => (
-                  <tr key={op._id} className="hover:bg-navy-800/20 transition-colors">
-                    <td className="px-4 py-3 text-sm text-navy-200">{op.title}</td>
-                    <td className="px-4 py-3 text-sm text-navy-200">
-                      <span className="bg-navy-800 px-2 py-1 rounded text-xs">
+                  <tr key={op._id} className="hover:bg-white/5 transition-all duration-200">
+                    <td className="px-6 py-4">
+                      <div className="text-sm font-bold text-white">{op.title}</div>
+                      <div className="text-[10px] text-navy-500 font-mono mt-1 opacity-50 uppercase">{op.slug}</div>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="bg-primary/10 text-primary border border-primary/20 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-tight">
                         {((categories.find(c => c._id.toString() === op.categoryId.toString()) || {}) as any).name}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-sm">
+                    <td className="px-6 py-4">
                       <a
-                        className="text-brand-400 hover:text-brand-300 underline underline-offset-4 truncate block max-w-[200px]"
+                        className="text-primary hover:text-white transition-colors text-xs font-medium underline underline-offset-4 truncate block max-w-[150px]"
                         href={op.videoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -127,14 +136,9 @@ export default async function OperationsPage() {
                         {op.videoUrl}
                       </a>
                     </td>
-                    <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
-                        {/* 
-                          The Edit feature needs a proper form/modal to be useful.
-                          Currently, it just crashes because of missing fields.
-                          I'll disable the action for now and just show it as a secondary button.
-                        */}
-                        <Button variant="secondary" size="sm" disabled>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center justify-center gap-3">
+                        <Button variant="outline" size="sm" className="h-8 px-4 text-xs font-bold uppercase tracking-tighter border-white/10 hover:bg-white/5" disabled title="Feature in maintenance">
                           Edit
                         </Button>
                         <DeleteButton url={`/api/admin/operations/${String(op._id)}`} reloadOnSuccess />

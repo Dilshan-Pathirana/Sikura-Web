@@ -65,10 +65,10 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center pt-20">
         {/* Abstract Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-brand-600/20 rounded-full blur-[120px] mix-blend-screen" />
-          <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-accent-teal/10 rounded-full blur-[100px] mix-blend-screen" />
-          <div className="absolute top-1/2 left-0 w-[600px] h-[500px] bg-accent-pink/10 rounded-full blur-[100px] mix-blend-screen" />
-          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen" />
+          <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-accent-green/10 rounded-full blur-[100px] mix-blend-screen" />
+          <div className="absolute top-1/2 left-0 w-[600px] h-[500px] bg-primary/10 rounded-full blur-[100px] mix-blend-screen" />
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -79,35 +79,33 @@ export default function Home() {
               transition={{ duration: 0.8, ease: "circOut" }}
               className="max-w-2xl"
             >
-              <Badge className="mb-8 border-brand-500/30 bg-brand-500/10 text-brand-300 shadow-[0_0_15px_rgba(139,92,246,0.3)] backdrop-blur-md px-4 py-1.5 text-sm">
-                <Shield className="w-3.5 h-3.5 mr-2 inline-block" />
-                Secure Operations Platform v2.0
+              <Badge className="mb-8 border-primary/30 bg-primary/10 text-primary shadow-[0_0_15px_rgba(37,99,235,0.2)] backdrop-blur-md px-4 py-1.5 text-sm uppercase tracking-widest font-bold">
+                <Zap className="w-3.5 h-3.5 mr-2 inline-block text-accent-green" />
+                Intelligent Skill Matrix Portal
               </Badge>
 
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 leading-tight">
-                Advanced <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-accent-cyan to-brand-500 animate-gradient-x">Security Protocols</span> <br />
-                & Training
+              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1] text-white">
+                MAS Kreeda <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-accent-green">Skill Matrix Portal</span>
               </h1>
 
-              <p className="text-xl text-navy-300 mb-10 leading-relaxed border-l-2 border-brand-500/30 pl-6">
-                Access classified operational procedures, surveillance tutorials,
-                and emergency response protocols. <br />
-                <span className="text-white font-medium">Authorized personnel only.</span>
+              <p className="text-xl text-navy-300 mb-10 leading-relaxed border-l-4 border-primary pl-6 max-w-xl">
+                An intelligent Skill Matrix system that connects operation categories with structured video learning — enabling clear competency tracking, faster upskilling, and continuous performance improvement.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-5">
                 <Link href="/categories">
-                  <Button size="lg" variant="glow" icon={<Play className="w-5 h-5 fill-current" />}>
-                    Start Training
+                  <Button size="lg" variant="glow" className="bg-primary hover:bg-primary-hover shadow-primary/40" icon={<ChevronRight className="w-5 h-5" />}>
+                    Explore Machine Types
                   </Button>
                 </Link>
-                <Link href="/categories">
+                <Link href="#recent">
                   <Button
                     variant="outline"
                     size="lg"
-                    className="border-navy-600 hover:bg-navy-800/50 hover:border-brand-500/50 hover:text-white transition-all duration-300"
+                    className="border-white/10 hover:bg-white/5 hover:border-white/20 text-white transition-all duration-300"
                   >
-                    Browse Categories
+                    View Recent Training
                   </Button>
                 </Link>
               </div>
@@ -122,20 +120,20 @@ export default function Home() {
               <div className="absolute inset-0 bg-brand-500/10 rounded-full blur-3xl animate-pulse" />
               <div className="relative glass-card rounded-2xl p-2 border border-white/10 shadow-2xl shadow-brand-900/50">
                 <div className="relative aspect-video rounded-xl overflow-hidden bg-navy-950">
-                  <div className="absolute inset-0 bg-gradient-to-br from-navy-800 to-navy-950 opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-navy-950 opacity-90" />
                   <div className="absolute inset-0 grid place-items-center">
-                    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shadow-brand-500/20 group cursor-pointer hover:scale-110 transition-transform">
+                    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shadow-primary/20 group cursor-pointer hover:scale-110 transition-transform">
                       <Play className="w-8 h-8 text-white fill-current ml-1" />
                     </div>
                   </div>
 
                   {/* Fake UI Elements */}
                   <div className="absolute top-4 left-4 flex gap-2">
-                    <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                    <span className="text-xs font-mono text-red-500">LIVE FEED</span>
+                    <div className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
+                    <span className="text-xs font-mono text-accent-green">SYSTEM READY</span>
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 h-1 bg-navy-800 rounded-full overflow-hidden">
-                    <div className="w-1/3 h-full bg-brand-500" />
+                    <div className="w-2/3 h-full bg-primary" />
                   </div>
                 </div>
               </div>
@@ -199,16 +197,16 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-10">
           <div>
-            <h2 className="text-3xl font-bold text-white mb-2">
-              Recent Operations
+            <h2 className="text-3xl font-extrabold text-white mb-2 tracking-tight">
+              Recent Training Videos
             </h2>
-            <p className="text-navy-400">Latest security briefings and updates.</p>
+            <p className="text-navy-400">Latest operational procedures and updates.</p>
           </div>
           <Link
             href="/categories"
-            className="flex items-center gap-2 text-brand-400 font-medium hover:text-brand-300 transition-colors group px-4 py-2 rounded-lg hover:bg-white/5"
+            className="flex items-center gap-2 text-primary font-bold hover:text-primary-hover transition-colors group px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/20"
           >
-            View All <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            Explore All <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -295,11 +293,11 @@ export default function Home() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Operational Domain Categories
+            <h2 className="text-4xl font-extrabold text-white mb-4 tracking-tight">
+              Machine Types
             </h2>
-            <p className="text-navy-400 text-lg">
-              Browse protocols by security classification and operational domain.
+            <p className="text-navy-400 text-lg max-w-xl mx-auto">
+              Select a category to access structured training videos and standard operating procedures.
             </p>
           </div>
 
@@ -314,19 +312,23 @@ export default function Home() {
                   transition={{ delay: i * 0.05 }}
                 >
                   <Link href={`/categories/${cat.slug}`}>
-                    <Card hover className="h-full border-l-4 border-l-brand-600 bg-navy-900/80 hover:bg-navy-800 transition-colors">
-                      <div className="flex items-start justify-between mb-6">
-                        <div className="p-3 bg-brand-500/10 rounded-xl text-brand-400 border border-brand-500/20">
-                          <Shield className="w-6 h-6" />
+                    <Card hover className="h-full border-t-4 border-t-primary bg-white group-hover:shadow-2xl transition-all duration-500">
+                      <div className="flex items-start justify-between mb-8">
+                        <div className="p-4 bg-primary/10 rounded-2xl text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                          <Activity className="w-7 h-7" />
                         </div>
-                        <Badge variant="neutral" className="bg-navy-950/50">
-                          {categories.filter(c => c.name === cat.name).length} Protocols
+                        <Badge variant="neutral" className="bg-navy-50 text-navy-600 border-navy-100 font-bold px-3 py-1">
+                          {cat.description?.includes('operation') ? cat.description.match(/\d+/)?.[0] || '0' : '0'} Ops
                         </Badge>
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-brand-400 transition-colors">
+                      <h3 className="text-2xl font-black text-navy-950 mb-3 group-hover:text-primary transition-colors">
                         {cat.name}
                       </h3>
-                      <p className="text-sm text-navy-400 leading-relaxed">{cat.description}</p>
+                      <p className="text-navy-500 leading-relaxed font-medium">Standard training modules for {cat.name} machinery.</p>
+
+                      <div className="mt-8 flex items-center gap-2 text-sm font-bold text-primary opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                        View Operations <ChevronRight className="w-4 h-4" />
+                      </div>
                     </Card>
                   </Link>
                 </motion.div>

@@ -34,31 +34,31 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-navy-500 mb-8 font-medium">
+      <div className="flex items-center gap-3 text-sm text-navy-500 mb-10 font-bold tracking-wide uppercase">
         <Link href="/" className="hover:text-white transition-colors">Home</Link>
-        <ChevronRight className="w-4 h-4" />
-        <Link href="/categories" className="hover:text-white transition-colors">Categories</Link>
-        <ChevronRight className="w-4 h-4" />
-        <span className="text-brand-400">{category.name}</span>
+        <ChevronRight className="w-4 h-4 text-navy-700" />
+        <Link href="/categories" className="hover:text-white transition-colors">Machine Types</Link>
+        <ChevronRight className="w-4 h-4 text-navy-700" />
+        <span className="text-primary">{category.name}</span>
       </div>
 
       <header className="mb-12 relative overflow-hidden rounded-2xl bg-navy-900 border border-navy-800 p-8 sm:p-12">
         <div className="relative z-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8">
             <Shield className="w-4 h-4" />
-            Operational Category
+            Machine Type Protocol
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-white mb-8 tracking-tight">
             {category.name}
           </h1>
-          <p className="text-lg text-navy-300 leading-relaxed">
-            {category.description}
+          <p className="text-xl text-navy-300 leading-relaxed max-w-2xl border-l-4 border-primary pl-8">
+            {category.description || `Comprehensive list of operational procedures and training guides for ${category.name} machines.`}
           </p>
         </div>
 
         {/* Decorative Background */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-teal/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-green/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
       </header>
 
       <section>

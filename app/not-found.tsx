@@ -13,8 +13,8 @@ export default function NotFound() {
       {/* Abstract Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-red-600/10 rounded-full blur-[120px] mix-blend-screen" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[500px] bg-brand-600/10 rounded-full blur-[100px] mix-blend-screen" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[500px] bg-primary/10 rounded-full blur-[100px] mix-blend-screen" />
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -37,11 +37,11 @@ export default function NotFound() {
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
-                  className="text-9xl md:text-[12rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-brand-500 to-red-600 animate-gradient-x tracking-tighter"
+                  className="text-9xl md:text-[12rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-primary to-primary-hover animate-gradient-x tracking-tighter"
                 >
                   404
                 </motion.div>
-                
+
                 {/* Glowing shield icon overlay */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.5 }}
@@ -79,20 +79,20 @@ export default function NotFound() {
                 className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
               >
                 <Link href="/">
-                  <Button 
-                    size="lg" 
-                    variant="glow" 
+                  <Button
+                    size="lg"
+                    variant="glow"
                     icon={<Home className="w-5 h-5" />}
                     className="w-full sm:w-auto"
                   >
                     Return to Home
                   </Button>
                 </Link>
-                
+
                 <Link href="/#categories">
-                  <Button 
-                    size="lg" 
-                    variant="secondary" 
+                  <Button
+                    size="lg"
+                    variant="secondary"
                     icon={<Search className="w-5 h-5" />}
                     className="w-full sm:w-auto"
                   >
@@ -110,27 +110,27 @@ export default function NotFound() {
               >
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
                   <div className="flex flex-col items-center">
-                    <div className="p-3 bg-brand-500/10 rounded-xl text-brand-400 border border-brand-500/20 mb-3">
+                    <div className="p-3 bg-primary/10 rounded-xl text-primary border border-primary/20 mb-3">
                       <Home className="w-5 h-5" />
                     </div>
-                    <h3 className="text-sm font-semibold text-white mb-1">Homepage</h3>
-                    <p className="text-xs text-navy-400">View latest operations</p>
+                    <h3 className="text-xs font-black text-white uppercase tracking-widest mb-1">Homepage</h3>
+                    <p className="text-[10px] text-navy-500 font-bold uppercase">Latest Skills</p>
                   </div>
-                  
+
                   <div className="flex flex-col items-center">
-                    <div className="p-3 bg-brand-500/10 rounded-xl text-brand-400 border border-brand-500/20 mb-3">
+                    <div className="p-3 bg-primary/10 rounded-xl text-primary border border-primary/20 mb-3">
                       <Search className="w-5 h-5" />
                     </div>
-                    <h3 className="text-sm font-semibold text-white mb-1">Categories</h3>
-                    <p className="text-xs text-navy-400">Browse by domain</p>
+                    <h3 className="text-xs font-black text-white uppercase tracking-widest mb-1">Directory</h3>
+                    <p className="text-[10px] text-navy-500 font-bold uppercase">Machine Types</p>
                   </div>
-                  
+
                   <div className="flex flex-col items-center">
-                    <div className="p-3 bg-brand-500/10 rounded-xl text-brand-400 border border-brand-500/20 mb-3">
+                    <div className="p-3 bg-accent-green/10 rounded-xl text-accent-green border border-accent-green/20 mb-3">
                       <Shield className="w-5 h-5" />
                     </div>
-                    <h3 className="text-sm font-semibold text-white mb-1">Admin Panel</h3>
-                    <p className="text-xs text-navy-400">Authorized access only</p>
+                    <h3 className="text-xs font-black text-white uppercase tracking-widest mb-1">Admin Access</h3>
+                    <p className="text-[10px] text-navy-500 font-bold uppercase">Restricted Area</p>
                   </div>
                 </div>
               </motion.div>

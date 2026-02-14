@@ -20,8 +20,8 @@ export default function OperationGrid({ ops }: { ops: any[] }) {
           value={query}
           onChange={e => setQuery(e.target.value)}
           placeholder="Search operations..."
-          icon={<Search className="w-4 h-4" />}
-          className="bg-navy-900 border-navy-700 text-white placeholder-navy-500 focus:border-brand-500"
+          icon={<Search className="w-4 h-4 text-navy-400" />}
+          className="bg-navy-950/50 border-white/5 text-white placeholder-navy-500 focus:border-primary focus:ring-primary/20"
         />
       </div>
 

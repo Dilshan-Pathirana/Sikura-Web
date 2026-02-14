@@ -12,11 +12,11 @@ export default function Badge({
   className = '',
 }: BadgeProps) {
   const variants = {
-    default: 'bg-brand-500/10 text-brand-300 border-brand-500/20 shadow-[0_0_10px_rgba(139,92,246,0.1)]',
-    success: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.1)]',
-    warning: 'bg-amber-500/10 text-amber-400 border-amber-500/20 shadow-[0_0_10px_rgba(245,158,11,0.1)]',
-    danger: 'bg-red-500/10 text-red-400 border-red-500/20 shadow-[0_0_10px_rgba(239,68,68,0.1)]',
-    neutral: 'bg-navy-800/50 text-navy-300 border-navy-700',
+    default: 'bg-primary/10 text-primary border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.1)]',
+    success: 'bg-accent-green/10 text-accent-green border-accent-green/20 shadow-[0_0_15px_rgba(34,197,94,0.1)]',
+    warning: 'bg-amber-500/10 text-amber-400 border-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.1)]',
+    danger: 'bg-red-500/10 text-red-400 border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]',
+    neutral: 'bg-white/5 text-navy-400 border-white/10',
   }
 
   return (

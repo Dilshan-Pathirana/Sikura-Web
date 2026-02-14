@@ -20,7 +20,7 @@ export default function Card({
   const baseClasses = `
     relative bg-navy-900/40 backdrop-blur-md rounded-2xl border border-white/5 overflow-hidden transition-all duration-300
     ${noPadding ? '' : 'p-6'}
-    ${hover || onClick ? 'hover:border-brand-500/30 hover:shadow-[0_0_30px_rgba(124,58,237,0.1)] group' : ''}
+    ${hover || onClick ? 'hover:border-primary/30 hover:shadow-[0_0_40px_rgba(37,99,235,0.1)] group' : ''}
     ${className}
   `
 

@@ -43,22 +43,22 @@ export default function CategoriesManager({ initial }: { initial: any[] }) {
   const startEdit = (c: any) => { setEditing(c); setName(c.name); setSlug(c.slug); setDescription(c.description || ''); setThumbnail(c.thumbnail || ''); setOpen(true) }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-medium">Categories</h2>
-        <Button onClick={openCreate}>New</Button>
+        <h2 className="text-3xl font-black text-white uppercase tracking-tight">Machine Types</h2>
+        <Button onClick={openCreate} className="px-6 h-10 text-xs font-black uppercase tracking-widest">New Type</Button>
       </div>
 
-      <div className="space-y-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {categories.map(c => (
-          <div key={c._id} className="bg-card border border-border rounded p-3 flex items-center justify-between">
+          <div key={c._id} className="bg-navy-900/50 border border-white/5 rounded-2xl p-5 flex items-center justify-between hover:bg-navy-900 hover:border-white/10 transition-all duration-300 group shadow-lg">
             <div>
-              <div className="font-semibold">{c.name}</div>
-              <div className="text-sm text-muted">{c.slug}</div>
+              <div className="text-sm font-black text-white uppercase tracking-tight">{c.name}</div>
+              <div className="text-[10px] text-navy-500 font-mono mt-1 opacity-50 uppercase tracking-tighter">{c.slug}</div>
             </div>
             <div className="flex gap-2">
-              <Button variant="secondary" onClick={() => startEdit(c)}>Edit</Button>
-              <Button variant="danger" onClick={async () => { if (!confirm('Delete?')) return; const res = await fetch(`/api/admin/categories/${c._id}`, { method: 'DELETE' }); if (res.ok) { setCategories(categories.filter(x => x._id !== c._id)); toast.success('Deleted') } else toast.error('Delete failed') }}>Delete</Button>
+              <Button variant="outline" size="sm" onClick={() => startEdit(c)} className="h-8 px-4 text-[10px] font-black uppercase tracking-widest border-white/10 hover:bg-white/5">Edit</Button>
+              <Button variant="danger" size="sm" onClick={async () => { if (!confirm('Delete?')) return; const res = await fetch(`/api/admin/categories/${c._id}`, { method: 'DELETE' }); if (res.ok) { setCategories(categories.filter(x => x._id !== c._id)); toast.success('Deleted') } else toast.error('Delete failed') }} className="h-8 px-4 text-[10px] font-black uppercase tracking-widest">Delete</Button>
             </div>
           </div>
         ))}
@@ -66,15 +66,23 @@ export default function CategoriesManager({ initial }: { initial: any[] }) {
 
       <Modal isOpen={open} onClose={() => setOpen(false)} title={`${editing ? 'Edit' : 'Create'} Category`}>
         <form onSubmit={submit}>
-          <div className="space-y-4">
-            <Input value={name} onChange={e => setName(e.target.value)} placeholder="Name" className="bg-navy-800 border-navy-700 text-white" />
-            <Input value={slug} onChange={e => setSlug(e.target.value)} placeholder="Slug" className="bg-navy-800 border-navy-700 text-white" />
-            <Input value={thumbnail} onChange={e => setThumbnail(e.target.value)} placeholder="Thumbnail URL" className="bg-navy-800 border-navy-700 text-white" />
-            <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Description" className="w-full p-2 bg-navy-800 border border-navy-700 text-white rounded focus:border-brand-500 focus:outline-none" />
+          <div className="space-y-5">
+            <div className="space-y-2">
+              <label className="text-[10px] font-black text-navy-400 uppercase tracking-widest pl-1">Name</label>
+              <Input value={name} onChange={e => setName(e.target.value)} placeholder="e.g., Lockstitch" className="bg-navy-950/50 border-white/10 text-white focus:border-primary" />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[10px] font-black text-navy-400 uppercase tracking-widest pl-1">Slug</label>
+              <Input value={slug} onChange={e => setSlug(e.target.value)} placeholder="e.g., lockstitch" className="bg-navy-950/50 border-white/10 text-white focus:border-primary font-mono" />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[10px] font-black text-navy-400 uppercase tracking-widest pl-1">Description</label>
+              <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Description of the machine type..." className="w-full p-3 bg-navy-950/50 border border-white/10 text-white rounded-xl focus:border-primary focus:outline-none min-h-[100px] transition-all" />
+            </div>
           </div>
-          <div className="flex justify-end gap-2 mt-6">
-            <Button variant="ghost" type="button" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button type="submit">{editing ? 'Save' : 'Create'}</Button>
+          <div className="flex justify-end gap-3 mt-8">
+            <Button variant="ghost" type="button" onClick={() => setOpen(false)} className="text-xs font-bold uppercase tracking-widest text-navy-400 hover:text-white">Cancel</Button>
+            <Button type="submit" className="px-8 h-10 text-xs font-black uppercase tracking-widest shadow-lg shadow-primary/20">{editing ? 'Save Changes' : 'Create Machine Type'}</Button>
           </div>
         </form>
       </Modal>

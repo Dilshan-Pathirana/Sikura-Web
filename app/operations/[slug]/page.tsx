@@ -43,14 +43,14 @@ export default async function OperationPage({ params }: Props) {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-navy-500 mb-8 font-medium overflow-x-auto pb-2">
+      <div className="flex items-center gap-3 text-sm text-navy-500 mb-10 font-bold tracking-wide uppercase overflow-x-auto pb-2 no-scrollbar">
         <Link href="/" className="hover:text-white transition-colors whitespace-nowrap">Home</Link>
-        <ChevronRight className="w-4 h-4 shrink-0" />
+        <ChevronRight className="w-4 h-4 shrink-0 text-navy-700" />
         <Link href={`/categories/${op.categorySlug}`} className="hover:text-white transition-colors whitespace-nowrap">
-          {op.categoryName || 'Category'}
+          {op.categoryName || 'Machine Type'}
         </Link>
-        <ChevronRight className="w-4 h-4 shrink-0" />
-        <span className="text-brand-400 whitespace-nowrap">{op.title}</span>
+        <ChevronRight className="w-4 h-4 shrink-0 text-navy-700" />
+        <span className="text-primary whitespace-nowrap">{op.title}</span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
@@ -71,18 +71,18 @@ export default async function OperationPage({ params }: Props) {
 
           <div className="space-y-6">
             <div>
-              <div className="flex flex-wrap items-center gap-3 mb-4">
-                <Badge variant="neutral" className="bg-brand-500/10 text-brand-300 border-brand-500/20">
-                  {op.categoryName || 'General Protocol'}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <Badge className="bg-primary/10 text-primary border-primary/20 font-bold px-3 py-1">
+                  {op.categoryName || 'General Machine Type'}
                 </Badge>
                 {op.duration && (
-                  <Badge variant="neutral" className="bg-navy-800 border-navy-700">
-                    <span className="opacity-70 mr-1">Duration:</span> {op.duration}
+                  <Badge variant="neutral" className="bg-navy-900 border-white/5 text-navy-400 font-bold">
+                    <span className="opacity-50 mr-2 uppercase tracking-tighter">Dur:</span> {op.duration}
                   </Badge>
                 )}
               </div>
 
-              <h1 className="text-3xl font-bold text-white mb-4 leading-tight">{op.title}</h1>
+              <h1 className="text-3xl md:text-5xl font-black text-white mb-6 leading-[1.1] tracking-tight">{op.title}</h1>
 
               <div className="flex items-center gap-6 text-sm text-navy-400 border-b border-navy-800 pb-6 mb-6">
                 <span className="flex items-center gap-1.5">
@@ -95,10 +95,12 @@ export default async function OperationPage({ params }: Props) {
                 </span>
               </div>
 
-              <div className="prose prose-invert max-w-none prose-p:text-navy-300 prose-headings:text-white">
-                <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-brand-500" />
-                  Operational Briefing
+              <div className="prose prose-invert max-w-none prose-p:text-navy-300 prose-headings:text-white bg-navy-900/40 p-8 rounded-2xl border border-white/5 shadow-inner">
+                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <FileText className="w-6 h-6 text-primary" />
+                  </div>
+                  Standard Operating Procedure
                 </h3>
                 <p className="leafing-relaxed">
                   {op.description}

@@ -23,17 +23,17 @@ export default function Button({
 
   const variants = {
     primary:
-      'bg-brand-600 hover:bg-brand-500 text-white focus:ring-brand-500 shadow-lg shadow-brand-600/20 hover:shadow-brand-500/40 border border-transparent',
+      'bg-primary hover:bg-primary-hover text-white shadow-lg shadow-primary/20 border border-primary/10',
     glow:
-      'bg-brand-600 text-white shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:bg-brand-500 border border-brand-400/20',
+      'bg-primary text-white shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:bg-primary-hover border border-white/20',
     secondary:
-      'bg-navy-800 hover:bg-navy-700 text-white border border-navy-700 hover:border-navy-600 focus:ring-navy-600',
+      'bg-navy-800 hover:bg-navy-700 text-white border border-white/5 focus:ring-navy-600',
     ghost:
-      'bg-transparent hover:bg-navy-800/50 text-navy-300 hover:text-white',
+      'bg-transparent hover:bg-white/5 text-navy-400 hover:text-white',
     danger:
-      'bg-red-600/10 hover:bg-red-600/20 text-red-500 border border-red-900/50 hover:border-red-500/50 focus:ring-red-900',
+      'bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/20 focus:ring-red-500',
     outline:
-      'border border-navy-700 bg-transparent hover:bg-navy-900 text-navy-300 hover:text-white focus:ring-navy-600',
+      'border border-white/10 bg-transparent hover:bg-white/5 text-navy-300 hover:text-white focus:ring-white/10',
   }
 
   const sizes = {

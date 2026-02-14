@@ -8,17 +8,17 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-          950: '#2e1065',
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#2563EB', // Primary
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+          950: '#172554',
         },
         navy: {
           50: '#f8fafc',
@@ -31,22 +31,24 @@ module.exports = {
           700: '#334155',
           800: '#1e293b',
           900: '#0f172a',
-          950: '#020617', // Deep space black
+          950: '#0B1220', // New Dark Background
         },
         accent: {
+          green: '#22C55E', // Accent
           teal: '#2dd4bf',
           pink: '#f472b6',
-          cyan: '#22d3ee',
         },
-        primary: '#7C3AED', // Brand 600
-        'primary-hover': '#6D28D9', // Brand 700
-        background: '#020617', // Navy 950
-        card: '#0f172a', // Navy 900
-        border: '#1e293b', // Navy 800
-        text: '#f8fafc', // Navy 50
-        muted: '#94a3b8', // Navy 400
+        primary: '#2563EB', // Brand 600
+        'primary-hover': '#1d4ed8', // Brand 700
+        background: '#0B1220', // New Dark Background
+        card: '#FFFFFF', // New White Card
+        'card-dark': '#1e293b', // Option for dark card
+        border: '#334155', // Navy 700
+        text: '#FFFFFF', // White text on dark
+        'text-muted': '#94a3b8', // Navy 400
+        'text-dark': '#0F172A', // Text on light
         danger: '#ef4444',
-        success: '#10b981'
+        success: '#22C55E'
       },
       fontFamily: {
         sans: ['Inter', 'Outfit', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial']

@@ -21,7 +21,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-navy-100 selection:bg-brand-500/30">
+    <div className="min-h-screen flex flex-col bg-background text-navy-100 selection:bg-primary/30">
       <Toaster position="top-right" theme="dark" richColors />
 
       {/* Navigation */}
@@ -34,14 +34,17 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <div className="flex items-center">
               <Link href="/" className="flex items-center gap-3 group">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-brand-500/20 blur-lg rounded-full group-hover:bg-brand-500/40 transition-all" />
-                  <div className="relative bg-gradient-to-br from-brand-600 to-brand-700 p-2 rounded-xl border border-brand-500/20 shadow-lg shadow-brand-500/20">
+                  <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full group-hover:bg-primary/40 transition-all" />
+                  <div className="relative bg-gradient-to-br from-primary to-primary-hover p-2 rounded-xl border border-white/10 shadow-lg shadow-primary/20">
                     <Shield className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <span className="text-xl font-bold text-white tracking-tight">
-                  Sikura<span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-200">Web</span>
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-xl font-black text-white leading-none tracking-tight">
+                    MAS <span className="text-primary">KREEDA</span>
+                  </span>
+                  <span className="text-[10px] font-bold text-navy-500 uppercase tracking-[0.2em] mt-1">Skill Matrix Portal</span>
+                </div>
               </Link>
 
               {!isAdmin && (
@@ -69,13 +72,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               {!isAdmin ? (
                 <>
                   <div className="relative group">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-brand-500 to-accent-cyan rounded-lg blur opacity-20 group-focus-within:opacity-50 transition duration-200" />
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent-green rounded-lg blur opacity-10 group-focus-within:opacity-30 transition duration-200" />
                     <div className="relative flex items-center">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-navy-400 group-focus-within:text-brand-400 transition-colors" />
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-navy-500 group-focus-within:text-primary transition-colors" />
                       <input
                         type="text"
                         placeholder="Search protocols..."
-                        className="pl-10 pr-4 py-2 bg-navy-900/90 border border-navy-700/50 rounded-lg text-sm text-white placeholder-navy-500 focus:outline-none focus:ring-0 focus:border-navy-600 block w-64 transition-all"
+                        className="pl-10 pr-4 py-2 bg-navy-900/90 border border-white/5 rounded-lg text-sm text-white placeholder-navy-500 focus:outline-none focus:border-primary/50 block w-64 transition-all"
                       />
                     </div>
                   </div>
@@ -164,30 +167,32 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       </main>
 
       {/* Footer */}
-      <footer className="relative bg-navy-950 border-t border-navy-900 pt-16 pb-8 overflow-hidden">
+      <footer className="relative bg-navy-950 border-t border-white/5 pt-16 pb-8 overflow-hidden">
         {/* Background Gradients */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-900/20 rounded-full blur-3xl -translate-y-1/2" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-teal/5 rounded-full blur-3xl translate-y-1/2" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -translate-y-1/2" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-green/5 rounded-full blur-[100px] translate-y-1/2" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2">
-              <Link href="/" className="flex items-center gap-2 mb-6 group">
-                <div className="bg-gradient-to-br from-brand-600 to-brand-700 p-1.5 rounded-lg">
+              <Link href="/" className="flex items-center gap-3 mb-6 group">
+                <div className="bg-gradient-to-br from-primary to-primary-hover p-1.5 rounded-lg">
                   <Shield className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-lg font-bold text-white tracking-tight">
-                  Sikura<span className="text-brand-400">Web</span>
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-lg font-black text-white leading-none tracking-tight">
+                    MAS <span className="text-primary">KREEDA</span>
+                  </span>
+                  <span className="text-[10px] font-bold text-navy-500 uppercase tracking-widest mt-0.5">Skill Matrix Portal</span>
+                </div>
               </Link>
-              <p className="text-navy-400 max-w-sm mb-6 leading-relaxed">
-                Advanced security operations platform for authorized personnel.
-                Secure protocol management, video operational guides, and
-                classified documentation access.
+              <p className="text-navy-400 max-w-sm mb-6 leading-relaxed font-medium">
+                The official training resource portal for MAS Kreeda apparel manufacturing sites.
+                Standardizing operational excellence through structured video learning.
               </p>
               <div className="flex gap-4">
                 {[Twitter, Github, Linkedin].map((Icon, i) => (
-                  <a key={i} href="#" className="p-2 rounded-lg bg-navy-900 border border-navy-800 text-navy-400 hover:text-white hover:border-brand-500/50 hover:bg-navy-800 transition-all">
+                  <a key={i} href="#" className="p-2.5 rounded-xl bg-navy-900 border border-white/5 text-navy-400 hover:text-white hover:border-primary/50 hover:bg-navy-800 transition-all shadow-lg">
                     <Icon className="h-5 w-5" />
                   </a>
                 ))}
@@ -195,11 +200,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Platform</h3>
-              <ul className="space-y-3">
-                {['Operations', 'Categories', 'Live Feed', 'Archives'].map(item => (
+              <h3 className="text-xs font-black text-white uppercase tracking-[0.2em] mb-6">Platform</h3>
+              <ul className="space-y-4">
+                {['Operations', 'Machine Types', 'Skill Matrix', 'Archives'].map(item => (
                   <li key={item}>
-                    <a href="#" className="text-navy-400 hover:text-brand-400 transition-colors">
+                    <a href="#" className="text-sm font-bold text-navy-500 hover:text-primary transition-colors">
                       {item}
                     </a>
                   </li>
@@ -208,11 +213,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">Legal</h3>
-              <ul className="space-y-3">
-                {['Privacy Protocol', 'Terms of Service', 'Security Clearance', 'Cookie Policy'].map(item => (
+              <h3 className="text-xs font-black text-white uppercase tracking-[0.2em] mb-6">Support</h3>
+              <ul className="space-y-4">
+                {['Privacy Policy', 'Safety Protocols', 'User Guide', 'Technical Support'].map(item => (
                   <li key={item}>
-                    <a href="#" className="text-navy-400 hover:text-brand-400 transition-colors">
+                    <a href="#" className="text-sm font-bold text-navy-500 hover:text-primary transition-colors">
                       {item}
                     </a>
                   </li>
@@ -221,13 +226,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             </div>
           </div>
 
-          <div className="border-t border-navy-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-navy-500">
-              © 2024 Sikura Security Systems. All rights reserved.
+          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs font-bold text-navy-600 uppercase tracking-widest">
+              © 2024 MAS Kreeda Apparel Manufacturing.
             </p>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-medium text-emerald-500">System Operational</span>
+            <div className="flex items-center gap-3 px-4 py-1.5 rounded-full bg-accent-green/10 border border-accent-green/20">
+              <div className="w-2 h-2 rounded-full bg-accent-green animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+              <span className="text-[10px] font-black text-accent-green uppercase tracking-widest">Portal Operational</span>
             </div>
           </div>
         </div>

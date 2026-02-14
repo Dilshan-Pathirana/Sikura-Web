@@ -26,8 +26,8 @@ export default function VideoPlayer({ videoUrl, title }: VideoPlayerProps) {
 
   return (
     <div className="relative group">
-      <div className="absolute -inset-1 bg-gradient-to-r from-brand-600 to-accent-cyan rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
-      <div className="relative w-full aspect-video bg-navy-950 rounded-xl overflow-hidden shadow-2xl border border-navy-800">
+      <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-accent-green rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
+      <div className="relative w-full aspect-video bg-navy-950 rounded-2xl overflow-hidden shadow-2xl border border-white/5">
         <iframe
           src={getEmbedUrl(videoUrl)}
           title={title}

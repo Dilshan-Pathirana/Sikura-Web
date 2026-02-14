@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 export default async function VideosPage() {
   // Placeholder: fetch videos from API or DB
   const videos = [{ id: '1', title: 'Sample Video' }]

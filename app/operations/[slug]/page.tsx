@@ -1,4 +1,5 @@
 import React from 'react'
+export const dynamic = 'force-dynamic'
 import connectMongoose from '../../../lib/mongoose'
 import Operation from '../../../models/Operation'
 import RelatedOperations from '../../../components/RelatedOperations'

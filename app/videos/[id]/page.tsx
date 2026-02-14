@@ -1,5 +1,7 @@
 import React from 'react'
 
+export const dynamic = 'force-dynamic'
+
 type Props = { params: { id: string } }
 
 export default async function VideoPage({ params }: Props) {

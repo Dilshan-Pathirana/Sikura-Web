@@ -9,6 +9,7 @@ import { Shield, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import * as M from '../../components/ui/motion'
 
+export const dynamic = 'force-dynamic'
 export const metadata = { title: 'Categories - Operational Protocols' }
 
 export default async function CategoriesIndexPage() {

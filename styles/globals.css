@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #020617;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.6) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.glass-panel {
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #c084fc, #6366f1);
+}
+
+.text-gradient-primary {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #8b5cf6, #3b82f6);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617; 
+}
+::-webkit-scrollbar-thumb {
+  background: #334155; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569; 
+}

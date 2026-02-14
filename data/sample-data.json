@@ -1,0 +1,168 @@
+{
+  "categories": [
+    {
+      "name": "Trauma",
+      "slug": "trauma",
+      "description": "Trauma management operations",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "name": "Cardiac",
+      "slug": "cardiac",
+      "description": "Cardiac procedures and operations",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "name": "Orthopedics",
+      "slug": "orthopedics",
+      "description": "Bone and joint operations",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "name": "Neurology",
+      "slug": "neurology",
+      "description": "Brain and nervous system procedures",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "name": "Pediatrics",
+      "slug": "pediatrics",
+      "description": "Surgical procedures for infants and children",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "name": "Oncology",
+      "slug": "oncology",
+      "description": "Cancer treatment and tumor removal operations",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "name": "Emergency Medicine",
+      "slug": "emergency",
+      "description": "Critical care and acute medical procedures",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "name": "Gastroenterology",
+      "slug": "gastroenterology",
+      "description": "Digestive system surgeries and endoscopies",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "name": "Dermatology",
+      "slug": "dermatology",
+      "description": "Skin, hair, and nail procedures",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    }
+  ],
+  "operations": [
+    {
+      "title": "FAST Exam",
+      "slug": "fast-exam",
+      "categorySlug": "trauma",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "description": "Focused assessment with sonography in trauma (FAST) exam",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "title": "Pericardiocentesis",
+      "slug": "pericardiocentesis",
+      "categorySlug": "cardiac",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "description": "Emergency pericardiocentesis procedure",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "title": "ORIF Femur",
+      "slug": "orif-femur",
+      "categorySlug": "orthopedics",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "description": "Open reduction and internal fixation of femoral fracture",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "title": "Craniotomy",
+      "slug": "craniotomy",
+      "categorySlug": "neurology",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "description": "Surgical opening into the skull",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "title": "Appendectomy (Pediatric)",
+      "slug": "appendectomy-peds",
+      "categorySlug": "pediatrics",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "description": "Surgical removal of the appendix in children",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "title": "Tumor Resection",
+      "slug": "tumor-resection",
+      "categorySlug": "oncology",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "description": "Removal of a tumorous growth",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "title": "Cricothyrotomy",
+      "slug": "cricothyrotomy",
+      "categorySlug": "emergency",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "description": "Emergency airway puncture",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "title": "Endoscopy",
+      "slug": "endoscopy",
+      "categorySlug": "gastroenterology",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "description": "Upper GI endoscopy procedure",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "title": "Skin Biopsy",
+      "slug": "skin-biopsy",
+      "categorySlug": "dermatology",
+      "videoUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "description": "Removal of skin tissue for examination",
+      "thumbnail": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "updatedAt": "2026-02-14T00:00:00.000Z"
+    }
+  ]
+}

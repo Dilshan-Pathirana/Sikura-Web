@@ -1,0 +1,30 @@
+import React from 'react'
+import AdminSidebar from '../../components/AdminSidebar'
+import AdminTopbar from '../../components/AdminTopbar'
+
+export const metadata = { title: 'Admin - Sikura' }
+
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html>
+      <body className="min-h-screen bg-navy-950 text-navy-50">
+        <div className="flex min-h-screen">
+          <aside className="w-64 border-r border-navy-800 bg-navy-900">
+            <div className="p-4 border-b border-navy-800">
+              <h2 className="text-xl font-bold text-white">Sikura Admin</h2>
+            </div>
+            <AdminSidebar />
+          </aside>
+          <div className="flex-1 flex flex-col bg-navy-950">
+            <header className="bg-navy-900 border-b border-navy-800 sticky top-0 z-10">
+              <div className="max-w-7xl mx-auto px-4 py-3">
+                <AdminTopbar />
+              </div>
+            </header>
+            <main className="p-6 max-w-7xl mx-auto w-full">{children}</main>
+          </div>
+        </div>
+      </body>
+    </html>
+  )
+}

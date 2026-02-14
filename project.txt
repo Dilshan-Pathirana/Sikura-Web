@@ -1,0 +1,476 @@
+Software Requirements Specification (SRS)
+
+Project: Web-based Operation Video Library
+Revision: 1.0
+Method: External video links (Google Drive + YouTube), no server video storage
+
+1. Introduction
+1.1 Purpose
+
+This document defines the functional, technical, and design requirements for a web application that allows users to browse categorized operation videos and administrators to manage the content.
+Videos are not stored on the server. Instead, admins paste video links (Google Drive or YouTube).
+
+1.2 Objectives
+
+Extremely low hosting cost
+
+Fast deployment
+
+Modern UI/UX
+
+Scalable content structure
+
+Secure admin panel
+
+1.3 Scope
+
+The system will allow:
+
+Public users to browse categories and watch videos
+
+Admins to manage categories and operations
+
+Admins to paste Google Drive or YouTube video links
+
+Responsive modern interface
+
+Accessible design
+
+2. System Overview
+2.1 Architecture
+Next.js full-stack app
+MongoDB Atlas database
+Vercel hosting
+External video storage (Drive/YouTube)
+
+
+No Express server required.
+
+2.2 User Roles
+Admin
+
+Login securely
+
+Create/edit/delete categories
+
+Create/edit/delete operations
+
+Paste video link (Drive or YouTube)
+
+Manage thumbnails and descriptions
+
+Public User
+
+Browse categories
+
+View operations
+
+Watch videos
+
+Search content (optional future feature)
+
+3. Functional Requirements
+3.1 Public Module
+FR-1: View Categories
+
+Display category cards on homepage
+
+Each card shows:
+
+thumbnail
+
+title
+
+number of operations
+
+FR-2: View Operations
+
+Clicking category shows operations list
+
+Grid layout with thumbnails
+
+FR-3: View Video
+
+Clicking operation opens video page
+
+Video embedded from external source
+
+Supported:
+
+Google Drive
+
+YouTube
+
+FR-4: Responsive UI
+
+Works on mobile, tablet, desktop
+
+3.2 Admin Module
+FR-5: Admin Login
+
+Username/password
+
+JWT authentication
+
+Password hashed
+
+FR-6: Category Management
+
+Admin can:
+
+create category
+
+edit category
+
+delete category
+
+upload thumbnail
+
+FR-7: Operation Management
+
+Admin can:
+
+add operation
+
+select category
+
+paste video URL
+
+add description
+
+upload thumbnail
+
+edit/delete operation
+
+4. Video Handling Requirements
+4.1 Storage Policy
+
+Videos are NOT stored on server.
+
+Admin pastes URL from:
+
+Google Drive
+
+YouTube
+
+System stores only:
+
+videoUrl
+
+4.2 Google Drive Handling
+
+Admin paste example:
+
+https://drive.google.com/file/d/FILE_ID/view
+
+
+System converts to:
+
+https://drive.google.com/file/d/FILE_ID/preview
+
+
+Video rendered via iframe.
+
+Drive video must be:
+
+public
+
+“Anyone with link”
+
+4.3 YouTube Handling
+
+Admin paste:
+
+https://youtube.com/watch?v=ID
+
+
+Converted to embed:
+
+https://www.youtube.com/embed/ID
+
+5. Database Design
+5.1 Collections
+Admins
+_id
+username
+passwordHash
+createdAt
+
+Categories
+_id
+name
+slug
+description
+thumbnail
+createdAt
+
+Operations
+_id
+title
+slug
+categoryId
+videoUrl
+description
+thumbnail
+createdAt
+
+
+Indexes:
+
+slug unique
+
+categoryId index
+
+6. Non-Functional Requirements
+6.1 Performance
+
+page load < 2 seconds
+
+lazy loading images
+
+optimized embeds
+
+6.2 Security
+
+bcrypt hashing
+
+JWT auth
+
+protected admin routes
+
+input validation
+
+6.3 Scalability
+
+unlimited categories
+
+unlimited operations
+
+external video hosting
+
+6.4 Maintainability
+
+modular code
+
+reusable components
+
+clean folder structure
+
+7. UI/UX Design Requirements
+7.1 Design Goals
+
+modern
+
+minimal
+
+readable
+
+high contrast text
+
+professional
+
+7.2 Color System
+
+Background:
+
+#0F172A (dark navy)
+
+
+Primary:
+
+#2563EB
+
+
+Cards:
+
+#FFFFFF
+
+
+Text:
+
+#FFFFFF on dark
+#0F172A on light
+
+
+Accent:
+
+#22C55E
+
+
+All text must have high contrast.
+
+7.3 Typography
+
+Font:
+
+Inter
+
+
+Hierarchy:
+
+H1: 36px
+H2: 28px
+H3: 22px
+Body: 16px
+
+
+Text must clearly stand out from background.
+
+Use:
+
+bold headings
+
+clear spacing
+
+readable line height
+
+7.4 Layout
+Landing Page
+
+Sections:
+
+Navbar
+
+Hero
+
+Categories grid
+
+CTA
+
+Footer
+
+Category Page
+
+Breadcrumb
+
+Title
+
+Operations grid
+
+Operation Page
+
+Video player
+
+Title
+
+Description
+
+Related videos
+
+Admin Dashboard
+
+Sidebar
+
+Tables
+
+Forms
+
+Modals
+
+7.5 Accessibility
+
+readable contrast
+
+alt text for images
+
+keyboard navigation
+
+focus states
+
+8. Component Requirements
+
+Reusable components:
+
+Button
+
+Card
+
+Modal
+
+Form input
+
+Video player
+
+Sidebar
+
+Navbar
+
+9. Technology Stack
+
+Frontend:
+
+Next.js 14
+
+TypeScript
+
+Tailwind CSS
+
+shadcn/ui
+
+Backend:
+
+Next.js API routes
+
+Database:
+
+MongoDB Atlas
+
+Video:
+
+Google Drive links
+
+YouTube links
+
+Hosting:
+
+Vercel
+
+10. Deployment Requirements
+
+environment variables
+
+MongoDB URI
+
+admin seed script
+
+Vercel deployment
+
+11. Future Enhancements
+
+search
+
+analytics
+
+multi-admin
+
+role permissions
+
+comments
+
+view tracking
+
+12. Constraints
+
+must use MongoDB Atlas
+
+must not store videos locally
+
+must be low cost
+
+must use Next.js
+
+13. Acceptance Criteria
+
+System is complete when:
+
+categories load
+
+operations load
+
+video embeds work
+
+admin CRUD works
+
+UI responsive
+
+login secure

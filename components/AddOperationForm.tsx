@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { toast } from 'sonner'
 import Input from './ui/Input'
 import Button from './ui/Button'
@@ -17,13 +17,24 @@ export default function AddOperationForm({
     categories: Category[];
     action: (formData: FormData) => Promise<void>
 }) {
+    const [videoUrl, setVideoUrl] = useState('')
     const formRef = useRef<HTMLFormElement>(null)
+
+    const getYoutubeId = (url: string) => {
+        if (!url) return null
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
+        const match = url.match(regExp)
+        return (match && match[2].length === 11) ? match[2] : null
+    }
+
+    const videoId = getYoutubeId(videoUrl)
 
     const handleSubmit = async (formData: FormData) => {
         try {
             await action(formData)
             toast.success('Operation added successfully')
             formRef.current?.reset()
+            setVideoUrl('')
         } catch (error) {
             toast.error('Failed to add operation: ' + (error instanceof Error ? error.message : String(error)))
         }
@@ -55,8 +66,24 @@ export default function AddOperationForm({
             </div>
             <div className="space-y-4">
                 <div className="space-y-2">
-                    <label className="text-xs font-black text-navy-400 uppercase tracking-widest pl-1">YouTube / Drive URL</label>
-                    <Input name="videoUrl" placeholder="https://..." className="bg-navy-950/50 border-white/10 focus:border-primary" />
+                    <label className="text-xs font-black text-navy-400 uppercase tracking-widest pl-1">YouTube URL (Unlisted)</label>
+                    <Input
+                        name="videoUrl"
+                        placeholder="https://youtu.be/..."
+                        className="bg-navy-950/50 border-white/10 focus:border-primary"
+                        value={videoUrl}
+                        onChange={(e) => setVideoUrl(e.target.value)}
+                    />
+                    {videoId && (
+                        <div className="mt-2 relative pt-[56.25%] rounded-xl overflow-hidden border border-white/10 shadow-lg bg-black">
+                            <iframe
+                                src={`https://www.youtube.com/embed/${videoId}`}
+                                className="absolute top-0 left-0 w-full h-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
+                        </div>
+                    )}
                 </div>
                 <div className="space-y-2">
                     <label className="text-xs font-black text-navy-400 uppercase tracking-widest pl-1">Thumbnail Preview URL (Optional)</label>

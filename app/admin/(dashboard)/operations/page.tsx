@@ -110,7 +110,7 @@ export default async function OperationsPage() {
                 <tr>
                   <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Title</th>
                   <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Category</th>
-                  <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Video Source</th>
+                  <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Video Instruction</th>
                   <th className="px-6 py-4 text-center text-xs font-black text-navy-400 uppercase tracking-widest">Actions</th>
                 </tr>
               </thead>

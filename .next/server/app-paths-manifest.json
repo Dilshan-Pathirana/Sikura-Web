@@ -1,5 +1,25 @@
 {
-  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/admin/categories/route": "app/api/admin/categories/route.js",
+  "/api/admin/categories/[id]/route": "app/api/admin/categories/[id]/route.js",
+  "/api/admin/operations/[id]/route": "app/api/admin/operations/[id]/route.js",
+  "/api/admin/profile/route": "app/api/admin/profile/route.js",
+  "/api/auth/route": "app/api/auth/route.js",
+  "/api/auth/logout/route": "app/api/auth/logout/route.js",
+  "/api/test/categories/route": "app/api/test/categories/route.js",
+  "/api/auth/me/route": "app/api/auth/me/route.js",
+  "/api/test/auth/route": "app/api/test/auth/route.js",
+  "/api/test/operations/route": "app/api/test/operations/route.js",
   "/api/videos/route": "app/api/videos/route.js",
-  "/api/admin/categories/route": "app/api/admin/categories/route.js"
+  "/page": "app/page.js",
+  "/categories/[slug]/page": "app/categories/[slug]/page.js",
+  "/videos/[id]/page": "app/videos/[id]/page.js",
+  "/videos/page": "app/videos/page.js",
+  "/categories/page": "app/categories/page.js",
+  "/operations/[slug]/page": "app/operations/[slug]/page.js",
+  "/admin/(auth)/login/page": "app/admin/(auth)/login/page.js",
+  "/admin/(dashboard)/page": "app/admin/(dashboard)/page.js",
+  "/admin/(dashboard)/profile/page": "app/admin/(dashboard)/profile/page.js",
+  "/admin/(dashboard)/categories/page": "app/admin/(dashboard)/categories/page.js",
+  "/admin/(dashboard)/operations/page": "app/admin/(dashboard)/operations/page.js"
 }

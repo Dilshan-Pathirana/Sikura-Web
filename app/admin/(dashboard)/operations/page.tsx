@@ -5,10 +5,8 @@ import Operation from '../../../../models/Operation'
 import Category from '../../../../models/Category'
 import { z } from 'zod'
 import Card from '../../../../components/ui/Card'
-import Input from '../../../../components/ui/Input'
-import Button from '../../../../components/ui/Button'
-import DeleteButton from '../../../../components/DeleteButton'
 import AddOperationForm from '../../../../components/AddOperationForm'
+import OperationsRepository from '../../../../components/admin/OperationsRepository'
 import { isGoogleDriveSharedLink } from '../../../../lib/videoUrl'
 
 export const metadata = { title: 'Operations - Admin' }
@@ -64,28 +62,6 @@ export default async function OperationsPage() {
     }
   }
 
-  async function editOperation(formData: FormData) {
-    'use server'
-    try {
-      const id = String(formData.get('id') || '')
-      const input = {
-        title: String(formData.get('title') || ''),
-        slug: String(formData.get('slug') || ''),
-        categoryId: String(formData.get('categoryId') || ''),
-        videoUrl: String(formData.get('videoUrl') || ''),
-        description: String(formData.get('description') || ''),
-        thumbnail: String(formData.get('thumbnail') || '')
-      }
-      const parsed = OperationSchema.parse(input)
-      await connectMongoose()
-      await Operation.findByIdAndUpdate(id, parsed)
-      revalidatePath('/admin/operations')
-    } catch (err) {
-      console.error('Edit operation failed:', err)
-      throw err // Rethrow so client can catch it
-    }
-  }
-
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -102,59 +78,7 @@ export default async function OperationsPage() {
         </Card>
       </section>
 
-      <section className="space-y-4">
-        <h2 className="text-xl font-extrabold text-white flex items-center gap-2">
-          <span className="w-1.5 h-6 bg-accent-green rounded-full" />
-          Operations Repository
-        </h2>
-        <Card className="border-white/5 overflow-hidden bg-navy-900/40">
-          <div className="overflow-x-auto">
-            <table className="min-w-full">
-              <thead className="bg-navy-950 border-b border-white/5">
-                <tr>
-                  <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Title</th>
-                  <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Category</th>
-                  <th className="px-6 py-4 text-left text-xs font-black text-navy-400 uppercase tracking-widest">Video Instruction</th>
-                  <th className="px-6 py-4 text-center text-xs font-black text-navy-400 uppercase tracking-widest">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
-                {ops.map(op => (
-                  <tr key={op._id} className="hover:bg-white/5 transition-all duration-200">
-                    <td className="px-6 py-4">
-                      <div className="text-sm font-bold text-white">{op.title}</div>
-                      <div className="text-[10px] text-navy-500 font-mono mt-1 opacity-50 uppercase">{op.slug}</div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="bg-primary/10 text-primary border border-primary/20 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-tight">
-                        {((categories.find(c => c._id.toString() === op.categoryId.toString()) || {}) as any).name}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <a
-                        className="text-primary hover:text-white transition-colors text-xs font-medium underline underline-offset-4 truncate block max-w-[150px]"
-                        href={op.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {op.videoUrl}
-                      </a>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center justify-center gap-3">
-                        <Button variant="outline" size="sm" className="h-8 px-4 text-xs font-bold uppercase tracking-tighter border-white/10 hover:bg-white/5" disabled title="Feature in maintenance">
-                          Edit
-                        </Button>
-                        <DeleteButton url={`/api/admin/operations/${String(op._id)}`} reloadOnSuccess />
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Card>
-      </section>
+      <OperationsRepository initialOps={ops} categories={categories} />
     </div>
   )
 }

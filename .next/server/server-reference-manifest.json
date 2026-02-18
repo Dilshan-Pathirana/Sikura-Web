@@ -1,5 +1,1 @@
-{
-  "node": {},
-  "edge": {},
-  "encryptionKey": "1stQMQiLBnuMeWODOLab5Gbki+L1eyupbbAcd7WjpaQ="
-}
+{"node":{"5c77ab5916426de064c4352a7dcc0a97752257b4":{"workers":{"app/admin/(dashboard)/categories/page":"4610"},"layer":{"app/admin/(dashboard)/categories/page":"rsc"}},"946e88c9d7ee1983112a5dcc7bc178cdc4465639":{"workers":{"app/admin/(dashboard)/categories/page":"4610"},"layer":{"app/admin/(dashboard)/categories/page":"rsc"}},"3296b085157420a6c31d135d597493181c7ea312":{"workers":{"app/admin/(dashboard)/operations/page":"2244"},"layer":{"app/admin/(dashboard)/operations/page":"rsc"}}},"edge":{},"encryptionKey":"/wIsOVhP6kqAB/REguUTNe9wY3Dn7RvvrJOzGFr5yOg="}

@@ -12,12 +12,21 @@ import * as M from '../../components/ui/motion'
 export const dynamic = 'force-dynamic'
 export const metadata = { title: 'Categories - Operational Protocols' }
 
-export default async function CategoriesIndexPage() {
+export default async function CategoriesIndexPage({ searchParams }: { searchParams?: { q?: string } }) {
     let categories: any[] = []
+    const query = String(searchParams?.q || '').trim().toLowerCase()
     try {
         await connectMongoose()
         categories = await Category.find().sort({ name: 1 }).lean()
         categories = JSON.parse(JSON.stringify(categories))
+        if (query) {
+            categories = categories.filter((cat: any) => {
+                const name = String(cat.name || '').toLowerCase()
+                const slug = String(cat.slug || '').toLowerCase()
+                const description = String(cat.description || '').toLowerCase()
+                return name.includes(query) || slug.includes(query) || description.includes(query)
+            })
+        }
     } catch (err) {
         console.error('DB error loading categories:', err)
     }
@@ -40,6 +49,11 @@ export default async function CategoriesIndexPage() {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                {query ? (
+                    <div className="mb-8 rounded-xl border border-primary/20 bg-primary/5 px-5 py-3 text-sm font-semibold text-primary">
+                        Showing results for: "{searchParams?.q}"
+                    </div>
+                ) : null}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {categories.length > 0 ? (
                         categories.map((cat, i) => (
@@ -74,7 +88,7 @@ export default async function CategoriesIndexPage() {
                         ))
                     ) : (
                         <div className="col-span-full py-12 text-center">
-                            <p className="text-navy-400 text-lg">No categories found.</p>
+                            <p className="text-navy-400 text-lg">No categories found{query ? ` for "${searchParams?.q}"` : ''}.</p>
                         </div>
                     )}
                 </div>

@@ -50,7 +50,7 @@ async function fetchJson(path, opts) {
     // create category to reference
     r = await fetchJson('/api/test/categories', { method: 'POST', headers, body: JSON.stringify({ name: 'OpCat', slug: 'opcat' }) })
     const catId = r.body._id
-    r = await fetchJson('/api/test/operations', { method: 'POST', headers, body: JSON.stringify({ title: 'Op1', slug: 'op1', categoryId: catId, videoUrl: 'https://youtu.be/dQw4w9WgXcQ' }) })
+    r = await fetchJson('/api/test/operations', { method: 'POST', headers, body: JSON.stringify({ title: 'Op1', slug: 'op1', categoryId: catId, videoUrl: 'https://drive.google.com/file/d/1A2b3C4d5E6f7G8h9I0jK1lM2nO3pQ4r/view?usp=sharing' }) })
     if (r.status === 200 && r.body && r.body._id) {
       ok('create operation')
       const id = r.body._id

@@ -10,13 +10,6 @@ import Badge from '../../../components/ui/Badge'
 
 type Props = { params: { slug: string } }
 
-function getYouTubeEmbedUrl(url?: string) {
-  if (!url) return null
-  const ytMatch = url.match(/(?:v=|youtu\.be\/|embed\/)([A-Za-z0-9_-]{6,11})/)
-  if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}`
-  return null
-}
-
 export default async function OperationPage({ params }: Props) {
   const { slug } = params
   let op: any = null
@@ -38,8 +31,6 @@ export default async function OperationPage({ params }: Props) {
     </div>
   )
 
-  const embed = getYouTubeEmbedUrl(op.videoUrl)
-
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Breadcrumb */}
@@ -57,16 +48,7 @@ export default async function OperationPage({ params }: Props) {
         <div className="lg:col-span-2 space-y-8">
           {/* Main Video Area */}
           <div>
-            {embed ? (
-              <VideoPlayer videoUrl={embed} title={op.title} />
-            ) : (
-              <div className="aspect-video bg-navy-900 rounded-xl border border-navy-800 flex items-center justify-center text-navy-400">
-                <div className="text-center">
-                  <p className="mb-2">Direct Video Link:</p>
-                  <a href={op.videoUrl} className="text-brand-400 hover:text-brand-300 underline break-all">{op.videoUrl}</a>
-                </div>
-              </div>
-            )}
+            <VideoPlayer videoUrl={op.videoUrl} title={op.title} />
           </div>
 
           <div className="space-y-6">

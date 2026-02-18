@@ -9,6 +9,7 @@ import Input from '../../../../components/ui/Input'
 import Button from '../../../../components/ui/Button'
 import DeleteButton from '../../../../components/DeleteButton'
 import AddOperationForm from '../../../../components/AddOperationForm'
+import { isGoogleDriveSharedLink } from '../../../../lib/videoUrl'
 
 export const metadata = { title: 'Operations - Admin' }
 
@@ -16,7 +17,10 @@ const OperationSchema = z.object({
   title: z.string().min(1),
   slug: z.string().min(1),
   categoryId: z.string().min(1),
-  videoUrl: z.string().min(1),
+  videoUrl: z
+    .string()
+    .url('Video URL must be a valid URL')
+    .refine((value) => isGoogleDriveSharedLink(value), 'Video URL must be a valid Google Drive shared file link'),
   description: z.string().optional().nullable(),
   thumbnail: z.string().optional().nullable()
 })

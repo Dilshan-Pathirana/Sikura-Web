@@ -27,7 +27,7 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   const body = await req.json()
   await connectMongoose()
   try {
-    const updated = await Operation.findByIdAndUpdate(params.id, body)
+    const updated = await Operation.findByIdAndUpdate(params.id, body, { runValidators: true, new: true })
     if (!updated) return NextResponse.json({ error: 'Not found' }, { status: 404 })
     try {
       revalidatePath('/operations')

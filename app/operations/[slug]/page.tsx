@@ -7,16 +7,27 @@ import VideoPlayer from '../../../components/VideoPlayer'
 import { ChevronRight, FileText, Calendar, Eye } from 'lucide-react'
 import Link from 'next/link'
 import Badge from '../../../components/ui/Badge'
+import mongoose from 'mongoose'
 
 type Props = { params: { slug: string } }
 
 export default async function OperationPage({ params }: Props) {
   const { slug } = params
+  const decodedSlug = decodeURIComponent(slug)
   let op: any = null
   let related: any[] = []
   try {
     await connectMongoose()
-    op = await Operation.findOne({ slug }).lean()
+    if (mongoose.Types.ObjectId.isValid(decodedSlug)) {
+      op = await Operation.findOne({
+        $or: [
+          { slug: decodedSlug },
+          { _id: new mongoose.Types.ObjectId(decodedSlug) }
+        ]
+      }).lean()
+    } else {
+      op = await Operation.findOne({ slug: decodedSlug }).lean()
+    }
     if (op) {
       related = await Operation.find({ categoryId: op.categoryId, _id: { $ne: op._id } }).limit(6).lean()
     }

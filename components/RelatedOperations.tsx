@@ -35,7 +35,7 @@ export default function RelatedOperations({
         Related Procedures
       </h3>
       {related.map((op) => (
-        <Link key={op._id} href={`/operations/${op.slug}`} className="block group">
+        <Link key={op._id} href={`/operations/${encodeURIComponent(op.slug || op._id)}`} className="block group">
           <Card
             noPadding
             hover

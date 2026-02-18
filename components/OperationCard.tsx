@@ -7,8 +7,10 @@ import Card from './ui/Card'
 import Badge from './ui/Badge'
 
 export default function OperationCard({ op }: { op: any }) {
+  const operationPath = `/operations/${encodeURIComponent(op.slug || op._id)}`
+
   return (
-    <Link href={`/operations/${op.slug}`} className="block h-full group">
+    <Link href={operationPath} className="block h-full group">
       <Card hover noPadding className="h-full flex flex-col border-white/5 bg-navy-900/20 group-hover:bg-navy-900/40 transition-all duration-500">
         <div className="relative aspect-video overflow-hidden bg-navy-950">
           <img

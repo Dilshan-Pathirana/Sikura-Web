@@ -220,7 +220,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <Link href={`/operations/${op.slug}`}>
+                <Link href={`/operations/${encodeURIComponent(op.slug || op._id)}`}>
                   <Card hover noPadding className="h-full flex flex-col group border-navy-800 bg-navy-900/40">
                     <div className="relative aspect-video overflow-hidden bg-navy-950">
                       <img

@@ -2,7 +2,7 @@ import React from 'react'
 import ClientLayout from '../components/ClientLayout'
 
 export const metadata = {
-  title: 'Sikura',
+  title: 'MAS Kreeda',
   description: 'Video browsing app'
 }
 

@@ -142,57 +142,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                label: 'Active Protocols',
-                value: operations.length > 0 ? `${operations.length}+` : 'Loading...',
-                icon: Shield,
-                color: 'text-brand-400',
-                bg: 'bg-brand-500/10'
-              },
-              {
-                label: 'Security Clearance',
-                value: 'Level 5',
-                icon: Lock,
-                color: 'text-accent-teal',
-                bg: 'bg-accent-teal/10'
-              },
-              {
-                label: 'System Uptime',
-                value: '99.9%',
-                icon: Activity,
-                color: 'text-accent-pink',
-                bg: 'bg-accent-pink/10'
-              },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="glass-card p-6 rounded-2xl flex items-center gap-5 hover:border-brand-500/30 transition-colors"
-                whileHover={{ y: -5 }}
-              >
-                <div className={`p-4 rounded-xl ${stat.bg}`}>
-                  <stat.icon className={`w-8 h-8 ${stat.color}`} />
-                </div>
-                <div>
-                  <p className="text-sm text-navy-400 font-medium uppercase tracking-wider mb-1">
-                    {stat.label}
-                  </p>
-                  <p className="text-3xl font-bold text-white tracking-tight">{stat.value}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      
       {/* Featured Operations */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-10">

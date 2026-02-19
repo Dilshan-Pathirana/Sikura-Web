@@ -36,7 +36,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       .catch(() => setCategorySuggestions([]))
   }, [isAdmin])
 
-  const handleCategorySearch = (e: React.FormEvent) => {
+  const handleGlobalSearch = (e: React.FormEvent) => {
     e.preventDefault()
     const q = searchQuery.trim()
     if (!q) {
@@ -95,7 +95,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             <div className="hidden md:flex items-center space-x-6">
               {!isAdmin ? (
                 <>
-                  <form onSubmit={handleCategorySearch} className="relative group">
+                  <form onSubmit={handleGlobalSearch} className="relative group">
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent-green rounded-lg blur opacity-10 group-focus-within:opacity-30 transition duration-200" />
                     <div className="relative flex items-center">
                       <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-navy-500 group-focus-within:text-primary transition-colors" />
@@ -103,7 +103,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Search machine types..."
+                        placeholder="Search categories or operations..."
                         list="category-search-suggestions"
                         className="pl-10 pr-4 py-2 bg-navy-900/90 border border-white/5 rounded-lg text-sm text-white placeholder-navy-500 focus:outline-none focus:border-primary/50 block w-72 transition-all"
                       />

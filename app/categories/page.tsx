@@ -2,6 +2,7 @@
 import React from 'react'
 import connectMongoose from '../../lib/mongoose'
 import Category from '../../models/Category'
+import Operation from '../../models/Operation'
 import Link from 'next/link'
 import Card from '../../components/ui/Card'
 import Badge from '../../components/ui/Badge'
@@ -14,17 +15,37 @@ export const metadata = { title: 'Categories - Operational Protocols' }
 
 export default async function CategoriesIndexPage({ searchParams }: { searchParams?: { q?: string } }) {
     let categories: any[] = []
+    let operations: any[] = []
     const query = String(searchParams?.q || '').trim().toLowerCase()
     try {
         await connectMongoose()
         categories = await Category.find().sort({ name: 1 }).lean()
         categories = JSON.parse(JSON.stringify(categories))
+        const allCategories = categories
         if (query) {
             categories = categories.filter((cat: any) => {
                 const name = String(cat.name || '').toLowerCase()
                 const slug = String(cat.slug || '').toLowerCase()
                 const description = String(cat.description || '').toLowerCase()
                 return name.includes(query) || slug.includes(query) || description.includes(query)
+            })
+
+            const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+            const regex = new RegExp(escapedQuery, 'i')
+            operations = await Operation.find({
+                $or: [
+                    { title: regex },
+                    { slug: regex },
+                    { description: regex }
+                ]
+            })
+                .sort({ createdAt: -1 })
+                .limit(24)
+                .lean()
+
+            operations = JSON.parse(JSON.stringify(operations)).map((op: any) => {
+                const categoryName = allCategories.find((cat: any) => String(cat._id) === String(op.categoryId))?.name || ''
+                return { ...op, categoryName }
             })
         }
     } catch (err) {
@@ -92,6 +113,39 @@ export default async function CategoriesIndexPage({ searchParams }: { searchPara
                         </div>
                     )}
                 </div>
+
+                {query ? (
+                    <section className="mt-14">
+                        <h2 className="text-2xl font-black text-white mb-6">
+                            Matching Operations
+                            <span className="text-navy-500 ml-2 text-base font-medium">({operations.length})</span>
+                        </h2>
+
+                        {operations.length > 0 ? (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {operations.map((op: any) => (
+                                    <Link key={String(op._id)} href={`/operations/${encodeURIComponent(op.slug || op._id)}`} className="block h-full group">
+                                        <Card hover className="h-full border border-white/10 bg-navy-900/40 group-hover:border-primary/40 transition-all duration-300">
+                                            <div className="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide bg-primary/10 text-primary border border-primary/20 mb-4">
+                                                {op.categoryName || 'Operation'}
+                                            </div>
+                                            <h3 className="text-xl font-extrabold text-white mb-2 group-hover:text-primary transition-colors">
+                                                {op.title}
+                                            </h3>
+                                            <p className="text-navy-400 line-clamp-3 leading-relaxed">
+                                                {op.description || 'Standard operating procedure and training video.'}
+                                            </p>
+                                        </Card>
+                                    </Link>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="rounded-xl border border-navy-800 bg-navy-900/40 px-5 py-4 text-navy-400">
+                                No operations found{query ? ` for "${searchParams?.q}"` : ''}.
+                            </div>
+                        )}
+                    </section>
+                ) : null}
             </div>
         </main>
     )
